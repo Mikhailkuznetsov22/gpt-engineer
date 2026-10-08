@@ -207,7 +207,7 @@ class DiskMemory(BaseMemory):
         """
         return iter(
             sorted(
-                str(item.relative_to(self.path))
+                item.relative_to(self.path).as_posix()
                 for item in sorted(self.path.rglob("*"))
                 if item.is_file()
             )
